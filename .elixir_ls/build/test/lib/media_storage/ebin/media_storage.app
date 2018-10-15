@@ -1,9 +1,0 @@
-{application,media_storage,
-             [{applications,[kernel,stdlib,elixir,logger,hackney,sweet_xml,
-                             ex_aws,ex_aws_s3]},
-              {description,"media_storage"},
-              {modules,['Elixir.MediaStorage','Elixir.MediaStorage.Download',
-                        'Elixir.MediaStorage.Upload']},
-              {registered,[]},
-              {vsn,"0.1.0"},
-              {extra_applications,[logger]}]}.
