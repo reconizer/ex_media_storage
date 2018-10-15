@@ -1,7 +1,5 @@
 # MediaStorage
 
-**TODO: Add description**
-
 ## Installation
 
 ```elixir
