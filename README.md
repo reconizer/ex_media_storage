@@ -4,18 +4,33 @@
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `media_storage` to your list of dependencies in `mix.exs`:
-
 ```elixir
 def deps do
   [
-    {:media_storage, "~> 0.1.0"}
+    {:media_storage, git: "git@github.com:reconizer/ex_media_storage"}
   ]
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/media_storage](https://hexdocs.pm/media_storage).
+## Config
+```elixir
+  config :media_storage,
+    s3_access_key_id: "AWS_ACCESS_KEY",
+    s3_secret_access_key: "AWS_SECRET",
+    s3_region: "BUCKET_REGION",
+    s3_bucket: "BUCKET_NAME"
+```
 
+## Downloading
+```elixir
+  # NOTE - BUCKET MUST BE PUBLIC
+  MediaStorage.download_url("image.png") = {:ok, "https://s3-BUCKET_REGION.amazonaws.com/BUCKET_NAME/image.png"}
+
+  MediaStorage.download_url("image.png", bucket: "test") = {:ok, "https://s3-BUCKET_REGION.amazonaws.com/test/image.png"}
+```
+## Uploading
+```elixir
+  MediaStorage.upload_url("image.png") = {:ok, "https://s3.BUCKET_REGION.amazonaws.com/BUCKET_NAME/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=...&X-Amz-Date=...&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=..."}
+
+  MediaStorage.upload_url("image.png", bucket: "test", expires_in: 7200) = {:ok, "https://s3.BUCKET_REGION.amazonaws.com/test/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=...&X-Amz-Date=...&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=..."}
+```
