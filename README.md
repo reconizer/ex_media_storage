@@ -22,13 +22,13 @@ end
 ## Downloading
 ```elixir
   # NOTE - BUCKET MUST BE PUBLIC
-  MediaStorage.download_url("image.png") = {:ok, "https://s3-BUCKET_REGION.amazonaws.com/BUCKET_NAME/image.png"}
+  {:ok, "https://s3-BUCKET_REGION.amazonaws.com/BUCKET_NAME/image.png"} = MediaStorage.download_url("image.png")
 
-  MediaStorage.download_url("image.png", bucket: "test") = {:ok, "https://s3-BUCKET_REGION.amazonaws.com/test/image.png"}
+  {:ok, "https://s3-BUCKET_REGION.amazonaws.com/test/image.png"} = MediaStorage.download_url("image.png", bucket: "test")
 ```
 ## Uploading
 ```elixir
-  MediaStorage.upload_url("image.png") = {:ok, "https://s3.BUCKET_REGION.amazonaws.com/BUCKET_NAME/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=...&X-Amz-Date=...&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=..."}
+   {:ok, "https://s3.BUCKET_REGION.amazonaws.com/BUCKET_NAME/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=...&X-Amz-Date=...&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=..."} = MediaStorage.upload_url("image.png")
 
-  MediaStorage.upload_url("image.png", bucket: "test", expires_in: 7200) = {:ok, "https://s3.BUCKET_REGION.amazonaws.com/test/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=...&X-Amz-Date=...&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=..."}
+  {:ok, "https://s3.BUCKET_REGION.amazonaws.com/test/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=...&X-Amz-Date=...&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=..."} = MediaStorage.upload_url("image.png", bucket: "test", expires_in: 7200)
 ```
