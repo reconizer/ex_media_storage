@@ -4,7 +4,7 @@ defmodule MediaStorage.MixProject do
   def project do
     [
       app: :media_storage,
-      version: "0.1.0",
+      version: "0.1.2",
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
       deps: deps()
@@ -21,8 +21,12 @@ defmodule MediaStorage.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
+      {:ex_aws, "~> 2.1.0"},
+      {:ex_aws_s3, "~> 2.0"},
+      {:hackney, "~> 1.9"},
+      {:sweet_xml, "~> 0.6"},
+      {:poison, "~> 3.0.0"},
+      {:mime, "~> 1.2"}
     ]
   end
 end
