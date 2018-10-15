@@ -5,7 +5,7 @@
 ```elixir
 def deps do
   [
-    {:media_storage, git: "git@github.com:reconizer/ex_media_storage"}
+    {:media_storage, git: "git@github.com:reconizer/ex_media_storage", tag: "0.1"}
   ]
 end
 ```
