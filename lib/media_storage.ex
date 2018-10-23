@@ -39,10 +39,11 @@ defmodule MediaStorage do
 
   @not_tested
   def upload_file([from: from_path, to: to_path] = opts) do
-    with bucket <- bucket(opts) do
+    with {:ok, bucket} <- bucket(opts) do
       from_path
       |> S3.Upload.stream_file()
-      |> S3.upload(bucket, to_path, content_type: MIME.from_path(to_path))
+      |> S3.upload(bucket, to_path)
+      |> IO.inspect()
       |> ExAws.request(config())
       |> case do
         {:ok, _} ->
@@ -56,7 +57,7 @@ defmodule MediaStorage do
 
   @not_tested
   def download_file([from: from_path, to: to_path] = opts) do
-    with bucket <- bucket(opts) do
+    with {:ok, bucket} <- bucket(opts) do
       S3.download_file(bucket, from_path, to_path)
       |> ExAws.request(config())
       |> case do
