@@ -43,7 +43,6 @@ defmodule MediaStorage do
       from_path
       |> S3.Upload.stream_file()
       |> S3.upload(bucket, to_path)
-      |> IO.inspect()
       |> ExAws.request(config())
       |> case do
         {:ok, _} ->
